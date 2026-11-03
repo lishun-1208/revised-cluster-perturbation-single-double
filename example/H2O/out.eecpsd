@@ -1,0 +1,669 @@
+ -----------------------------------------
+           start read input file          
+ -----------------------------------------
+--------------------------------------------------
+----------------- file CCSOINP -------------------
+ ref_state=rhf                                                                                                                                                                                           
+ shell=close                                                                                                                                                                                             
+ estate_sym=0/2/0/0/0/0/0/0                                                                                                                                                                              
+ ex_mult=1                                                                                                                                                                                               
+ iostate=0                                                                                                                                                                                               
+ spin_free=t                                                                                                                                                                                             
+--------------- input file end -------------------
+--------------------------------------------------
+ref_state = rhf
+shell = close
+ estate_sym =                         0                        2 
+                        0                        0                        0 
+                        0                        0                        0
+ex_mult =                        1
+iostate =                        0
+spin_free = t
+ -----------------------------------------
+               start readmodule           
+ -----------------------------------------
+symR: 1 1 1
+nirrep: 4
+dirprd:
+ 1 2 3 4 5 6 7 8
+ 2 1 4 3 6 5 8 7
+ 3 4 1 2 7 8 5 6
+ 4 3 2 1 8 7 6 5
+ 5 6 7 8 1 2 3 4
+ 6 5 8 7 2 1 4 3
+ 7 8 5 6 3 4 1 2
+ 8 7 6 5 4 3 2 1
+vrta(8) =   32   12   17   26    0    0    0    0
+vrtb(8) =   32   12   17   26    0    0    0    0
+popa(8) =    3    0    1    1    0    0    0    0
+popb(8) =    3    0    1    1    0    0    0    0
+iprcln                   32768
+iprcwd                    4096
+ichcsz                    4096
+nvvvv(ab,cd) =   232046736
+memory for nvvvv(MiB) =    1770.376099
+memory for nvvvv(GiB) =       1.728883
+nvvvo(ab,ci) =    13478704
+memory for nvvvo(MiB) =     102.834351
+memory for nvvvo(GiB) =       0.100424
+nvvoo(ab,ij) =      791536
+memory for nvvoo(MiB) =       6.038940
+memory for nvvoo(GiB) =       0.005897
+nvooo(ai,jk) =       47824
+memory for nvooo(MiB) =       0.364868
+noooo(ij,kl) =        3152
+memory for noooo(MiB) =       0.024048
+nOcc =   10
+nVir =  174
+popo =    6    0    2    2    0    0    0    0
+popv =   64   24   34   52    0    0    0    0
+nCore =              1342177280
+SCF energy =     -76.0604663320273175
+-----------------------------------------
+           start allocate iCore          
+-----------------------------------------
+iFree =       66586958
+maxCore =  1275590322
+free memory(GiB):       9.503889
+-----------------------------------------
+               start loadSCF             
+-----------------------------------------
+ number of orbital:                      184
+ ------------------ orbital energy -----------------
+ occupied orbital
+symmetry:    1
+    1    1   alpha     -20.5676133117838909
+    2    2   alpha      -1.3527402875249228
+    3    3   alpha      -0.5849373926789279
+    4    4   beta      -20.5676133117838909
+    5    5   beta       -1.3527402875249228
+    6    6   beta       -0.5849373926789279
+symmetry:    2
+symmetry:    3
+    7    1   alpha      -0.5102576447146369
+    8    2   beta       -0.5102576447146369
+symmetry:    4
+    9    1   alpha      -0.7164336972618137
+   10    2   beta       -0.7164336972618137
+ virtual orbital
+symmetry:    1
+   11    1   alpha       0.0294082223315448
+   12    2   alpha       0.1359280782475384
+   13    3   alpha       0.1751861309278626
+   14    4   alpha       0.2449923733662783
+   15    5   alpha       0.3103485798392540
+   16    6   alpha       0.4377883553676052
+   17    7   alpha       0.6584606173910850
+   18    8   alpha       0.7082090605440658
+   19    9   alpha       0.8310077215447428
+   20   10   alpha       0.8916942223957600
+   21   11   alpha       0.9620330160966105
+   22   12   alpha       1.0217717130480874
+   23   13   alpha       1.1822082448715803
+   24   14   alpha       1.5362442803522527
+   25   15   alpha       1.8038844736652744
+   26   16   alpha       2.1189046445764514
+   27   17   alpha       2.3260305732386533
+   28   18   alpha       2.4185795832797754
+   29   19   alpha       2.4790946596222860
+   30   20   alpha       2.7723481947261885
+   31   21   alpha       3.7453740790072301
+   32   22   alpha       4.1673578238076141
+   33   23   alpha       4.3755641905892855
+   34   24   alpha       4.7260615377756396
+   35   25   alpha       5.3305759243210691
+   36   26   alpha       5.6676948710281927
+   37   27   alpha       6.1782227983356961
+   38   28   alpha       6.8989287559065122
+   39   29   alpha       7.3267273913559690
+   40   30   alpha       7.5373090745420068
+   41   31   alpha       7.9023258898775497
+   42   32   alpha      15.7739092370300433
+   43   33   beta        0.0294082223315448
+   44   34   beta        0.1359280782475384
+   45   35   beta        0.1751861309278626
+   46   36   beta        0.2449923733662783
+   47   37   beta        0.3103485798392540
+   48   38   beta        0.4377883553676052
+   49   39   beta        0.6584606173910850
+   50   40   beta        0.7082090605440658
+   51   41   beta        0.8310077215447428
+   52   42   beta        0.8916942223957600
+   53   43   beta        0.9620330160966105
+   54   44   beta        1.0217717130480874
+   55   45   beta        1.1822082448715803
+   56   46   beta        1.5362442803522527
+   57   47   beta        1.8038844736652744
+   58   48   beta        2.1189046445764514
+   59   49   beta        2.3260305732386533
+   60   50   beta        2.4185795832797754
+   61   51   beta        2.4790946596222860
+   62   52   beta        2.7723481947261885
+   63   53   beta        3.7453740790072301
+   64   54   beta        4.1673578238076141
+   65   55   beta        4.3755641905892855
+   66   56   beta        4.7260615377756396
+   67   57   beta        5.3305759243210691
+   68   58   beta        5.6676948710281927
+   69   59   beta        6.1782227983356961
+   70   60   beta        6.8989287559065122
+   71   61   beta        7.3267273913559690
+   72   62   beta        7.5373090745420068
+   73   63   beta        7.9023258898775497
+   74   64   beta       15.7739092370300433
+symmetry:    2
+   75    1   alpha       0.2653260273240263
+   76    2   alpha       0.7224386297538136
+   77    3   alpha       0.9225173085348841
+   78    4   alpha       1.1764651029452287
+   79    5   alpha       1.5108805446928524
+   80    6   alpha       2.3162321340347769
+   81    7   alpha       2.8849383795974104
+   82    8   alpha       4.0183501740750032
+   83    9   alpha       4.3781348884288898
+   84   10   alpha       5.1537462134224281
+   85   11   alpha       7.3151573746090728
+   86   12   alpha       7.3557073868696730
+   87   13   beta        0.2653260273240263
+   88   14   beta        0.7224386297538136
+   89   15   beta        0.9225173085348841
+   90   16   beta        1.1764651029452287
+   91   17   beta        1.5108805446928524
+   92   18   beta        2.3162321340347769
+   93   19   beta        2.8849383795974104
+   94   20   beta        4.0183501740750032
+   95   21   beta        4.3781348884288898
+   96   22   beta        5.1537462134224281
+   97   23   beta        7.3151573746090728
+   98   24   beta        7.3557073868696730
+symmetry:    3
+   99    1   alpha       0.1586372372009116
+  100    2   alpha       0.3003415339543310
+  101    3   alpha       0.7315956564140210
+  102    4   alpha       0.8463600579639732
+  103    5   alpha       0.9183005789920422
+  104    6   alpha       1.0828860451869196
+  105    7   alpha       1.5844217474880957
+  106    8   alpha       2.2626987362849893
+  107    9   alpha       2.4206616749658489
+  108   10   alpha       2.6976844708726859
+  109   11   alpha       4.0851534010054946
+  110   12   alpha       4.2905681966943661
+  111   13   alpha       4.4061972470554709
+  112   14   alpha       5.5259565250668627
+  113   15   alpha       6.7095263573883637
+  114   16   alpha       7.1335558715374958
+  115   17   alpha       7.2529446750882487
+  116   18   beta        0.1586372372009116
+  117   19   beta        0.3003415339543310
+  118   20   beta        0.7315956564140210
+  119   21   beta        0.8463600579639732
+  120   22   beta        0.9183005789920422
+  121   23   beta        1.0828860451869196
+  122   24   beta        1.5844217474880957
+  123   25   beta        2.2626987362849893
+  124   26   beta        2.4206616749658489
+  125   27   beta        2.6976844708726859
+  126   28   beta        4.0851534010054946
+  127   29   beta        4.2905681966943661
+  128   30   beta        4.4061972470554709
+  129   31   beta        5.5259565250668627
+  130   32   beta        6.7095263573883637
+  131   33   beta        7.1335558715374958
+  132   34   beta        7.2529446750882487
+symmetry:    4
+  133    1   alpha       0.0476882012917707
+  134    2   alpha       0.1830229101418928
+  135    3   alpha       0.2273956211810587
+  136    4   alpha       0.3658266188293552
+  137    5   alpha       0.4664503545342102
+  138    6   alpha       0.5994561498258397
+  139    7   alpha       0.9129301314094453
+  140    8   alpha       0.9308211408224185
+  141    9   alpha       1.0438970215068291
+  142   10   alpha       1.1090786916250537
+  143   11   alpha       1.2601740066661482
+  144   12   alpha       1.8202169028667512
+  145   13   alpha       1.9872775332687704
+  146   14   alpha       2.4427503532470274
+  147   15   alpha       2.6763115336299736
+  148   16   alpha       2.8178782648298326
+  149   17   alpha       3.6549166172044223
+  150   18   alpha       4.2489777261152115
+  151   19   alpha       4.5175125055476446
+  152   20   alpha       4.8467958622490448
+  153   21   alpha       5.1493120741196856
+  154   22   alpha       5.2555071691574655
+  155   23   alpha       6.5135944621851083
+  156   24   alpha       7.3075033537103957
+  157   25   alpha       7.9267696726343733
+  158   26   alpha       8.8081108599582141
+  159   27   beta        0.0476882012917707
+  160   28   beta        0.1830229101418928
+  161   29   beta        0.2273956211810587
+  162   30   beta        0.3658266188293552
+  163   31   beta        0.4664503545342102
+  164   32   beta        0.5994561498258397
+  165   33   beta        0.9129301314094453
+  166   34   beta        0.9308211408224185
+  167   35   beta        1.0438970215068291
+  168   36   beta        1.1090786916250537
+  169   37   beta        1.2601740066661482
+  170   38   beta        1.8202169028667512
+  171   39   beta        1.9872775332687704
+  172   40   beta        2.4427503532470274
+  173   41   beta        2.6763115336299736
+  174   42   beta        2.8178782648298326
+  175   43   beta        3.6549166172044223
+  176   44   beta        4.2489777261152115
+  177   45   beta        4.5175125055476446
+  178   46   beta        4.8467958622490448
+  179   47   beta        5.1493120741196856
+  180   48   beta        5.2555071691574655
+  181   49   beta        6.5135944621851083
+  182   50   beta        7.3075033537103957
+  183   51   beta        7.9267696726343733
+  184   52   beta        8.8081108599582141
+ ---------------------------------------------------
+ norm of fij:   3.9703009579358615E-007
+ norm of fab:   3.3853254735072956E-006
+ norm of fia:   1.1870364278388829E-006
+ iop =                        0
+ norm of ijkl:    7.055776768637966     
+ norm of ijka:    3.213306665983949     
+ norm of abij:    1.521861855766138     
+ norm of iabj:    22.65667532634171     
+ norm of abci:    6.436502266340528     
+ norm of abcd:    48.51763375165206     
+cpu time for prepare:       0.3453090190887451
+CIS excitation energy for symmerty 2 root  1:       0.3807436820033754
+CIS excitation energy for symmerty 2 root  2:       0.5122886692559052
+ -----------------------------------------
+         start EE-CPS(D) calculate        
+ -----------------------------------------
+norm of Foo^(2):       0.1963148005931432
+norm of Fvv^(2):       0.1221176807489287
+norm of Wovoo^(2):       0.5460839935537528
+norm of Wovvo^(2):       0.2471084525264862
+norm of Foo^(3):       0.0132092804358887
+norm of Fvv^(3):       0.0431351763193607
+norm of Wovvo^(3):       0.0744153987455099
+cpu time for calculate J^(2) and J^(3)       0.6345348358154297
+---------- symmetry 2 state  1 order 1
+norm of energy C1^(1)       0.0000000000000000
+norm of energy C2^(1):       0.6065495175985811
+cpu time for calculate energy:       0.0100619792938232
+excitation energy for symmetry  2 state   1 order 1:       0.0000000000000000
+cpu time:       0.0123410224914551
+---------- symmetry 2 state  1 order 2
+norm of vector C1^(1):       0.0000000000000000
+norm of vector C2^(1):       0.6065495175985811
+------ symmetry 2 state   1
+orthogonal to L^(0):       0.0000000000000000
+norm of R1^(1):       0.0000000000000000
+ -------------- 1 excitation information --------------
+ symi i ---> syma a
+ 1   1 a ---> 2   1 a       0.0000000000000000
+ 1   1 a ---> 2   2 a       0.0000000000000000
+ 1   1 a ---> 2   3 a       0.0000000000000000
+ 1   1 a ---> 2   4 a       0.0000000000000000
+ 1   1 a ---> 2   5 a       0.0000000000000000
+ 1   1 a ---> 2   6 a       0.0000000000000000
+ 1   1 a ---> 2   7 a       0.0000000000000000
+ 1   1 a ---> 2   8 a       0.0000000000000000
+ 1   1 a ---> 2   9 a       0.0000000000000000
+ 1   1 a ---> 2  10 a       0.0000000000000000
+ ------------------------------------------------------
+norm of R2^(1):       0.2832262772485515
+ -------------- 2 excitation information --------------
+ symi i symj j ---> syma a symb b
+ 3   1 a| 3   2 b ---> 3  18 b| 4   1 a       0.0497773915778229
+ 3   1 a| 3   2 b ---> 3   1 a| 4  27 b      -0.0497773914915361
+ 3   1 a| 4   2 b ---> 4   1 a| 4  31 b      -0.0399534197369926
+ 3   2 b| 4   1 a ---> 4   5 a| 4  27 b       0.0399534196687359
+ 3   1 a| 3   2 b ---> 3  19 b| 4   1 a      -0.0370005957917776
+ 3   1 a| 3   2 b ---> 3   2 a| 4  27 b       0.0370005957290359
+ 1   6 b| 3   1 a ---> 1  34 b| 4   1 a      -0.0360372635475085
+ 1   3 a| 3   2 b ---> 1   2 a| 4  27 b      -0.0360372634852287
+ 3   1 a| 4   1 a ---> 4   1 a| 4   5 a      -0.0359469934215039
+ 3   2 b| 4   2 b ---> 4  27 b| 4  31 b      -0.0359469933579027
+ ------------------------------------------------------
+norm of energy C1^(2)       0.0686259702208880
+norm of energy C2^(2):       0.1305696577209677
+cpu time for calculate energy:       0.4357118606567383
+excitation energy for symmetry  2 state   1 order 2:      -0.0523271974934407
+cpu time:       0.4395079612731934
+---------- symmetry 2 state  1 order 3
+norm of vector C1^(2):       0.0444003174677913
+norm of vector C2^(2):       0.1305696577209677
+ ----------------- iteration:                        1
+norm of R1:       0.0417450518819546
+ ----------------- iteration:                        2
+  Convergence information after     2 iterations: 
+  Largest element of residual vector : -0.14921385E-01.
+  Largest element of DIIS residual   : -0.14921385E-01.
+norm of R1:       0.0755835449689355
+ ----------------- iteration:                        3
+  Convergence information after     3 iterations: 
+  Largest element of residual vector :  0.11985313E-01.
+  Largest element of DIIS residual   :  0.70648481E-02.
+norm of R1:       0.2031671474338807
+ ----------------- iteration:                        4
+  Convergence information after     4 iterations: 
+  Largest element of residual vector :  0.59011603E-02.
+  Largest element of DIIS residual   :  0.34227824E-02.
+norm of R1:       0.2564141674121214
+ ----------------- iteration:                        5
+  Convergence information after     5 iterations: 
+  Largest element of residual vector :  0.27611283E-02.
+  Largest element of DIIS residual   :  0.10832566E-02.
+norm of R1:       0.2739173304280299
+ ----------------- iteration:                        6
+  Convergence information after     6 iterations: 
+  Largest element of residual vector :  0.91364896E-03.
+  Largest element of DIIS residual   : -0.57179097E-03.
+norm of R1:       0.2761556235398888
+ ----------------- iteration:                        7
+  Convergence information after     7 iterations: 
+  Largest element of residual vector :  0.46115971E-03.
+  Largest element of DIIS residual   :  0.97163538E-04.
+norm of R1:       0.2775676191012433
+ ----------------- iteration:                        8
+  Convergence information after     8 iterations: 
+  Largest element of residual vector :  0.60006588E-04.
+  Largest element of DIIS residual   :  0.30281489E-04.
+norm of R1:       0.2778172964778166
+ ----------------- iteration:                        9
+  Convergence information after     9 iterations: 
+  Largest element of residual vector :  0.19348418E-04.
+  Largest element of DIIS residual   :  0.90277508E-05.
+norm of R1:       0.2778251554075275
+ ----------------- iteration:                       10
+  Convergence information after    10 iterations: 
+  Largest element of residual vector :  0.55185405E-05.
+  Largest element of DIIS residual   :  0.17892509E-05.
+norm of R1:       0.2778276438183921
+ ----------------- iteration:                       11
+  Convergence information after    11 iterations: 
+  Largest element of residual vector :  0.12771121E-05.
+  Largest element of DIIS residual   :  0.66761088E-06.
+norm of R1:       0.2778292401444002
+ ----------------- iteration:                       12
+  Convergence information after    12 iterations: 
+  Largest element of residual vector :  0.47935123E-06.
+  Largest element of DIIS residual   :  0.33532618E-06.
+norm of R1:       0.2778292229886239
+ ----------------- iteration:                       13
+  Convergence information after    13 iterations: 
+  Largest element of residual vector :  0.24257126E-06.
+  Largest element of DIIS residual   : -0.80277788E-07.
+norm of R1:       0.2778290392994407
+ DIIS convergenced
+total cpu time for iteration:       0.0375640392303467
+------ symmetry 2 state   1
+orthogonal to L^(0):      -0.0000000000000000
+norm of R1^(2):       0.2778290392994407
+ -------------- 1 excitation information --------------
+ symi i ---> syma a
+ 3   1 a ---> 4   1 a       0.1210538596782669
+ 3   2 b ---> 4  27 b       0.1210538590506790
+ 3   2 b ---> 4  31 b      -0.1005547641300592
+ 3   1 a ---> 4   5 a      -0.1005547640404917
+ 3   2 b ---> 4  29 b       0.0721964027995860
+ 3   1 a ---> 4   3 a       0.0721964026933434
+ 3   2 b ---> 4  28 b       0.0637034014670340
+ 3   1 a ---> 4   2 a       0.0637034012277061
+ 3   2 b ---> 4  32 b       0.0476311244127382
+ 3   1 a ---> 4   6 a       0.0476311243951715
+ ------------------------------------------------------
+norm of R2^(2):       0.0643573184538751
+ -------------- 2 excitation information --------------
+ symi i symj j ---> syma a symb b
+ 3   1 a| 3   2 b ---> 3  18 b| 4   1 a      -0.0158955553276037
+ 3   1 a| 3   2 b ---> 3   1 a| 4  27 b       0.0158955552974436
+ 1   6 b| 3   1 a ---> 1  34 b| 4   1 a       0.0106499825713851
+ 1   3 a| 3   2 b ---> 1   2 a| 4  27 b       0.0106499825510216
+ 1   3 a| 3   1 a ---> 1   2 a| 4   1 a       0.0105173893986612
+ 1   6 b| 3   2 b ---> 1  34 b| 4  27 b       0.0105173893785825
+ 3   1 a| 3   2 b ---> 3  19 b| 4   1 a       0.0099647181261543
+ 3   1 a| 3   2 b ---> 3   2 a| 4  27 b      -0.0099647181079314
+ 3   1 a| 4   1 a ---> 4   1 a| 4   5 a       0.0094596688997601
+ 3   2 b| 4   2 b ---> 4  27 b| 4  31 b       0.0094596688826784
+ ------------------------------------------------------
+norm of energy C1^(3)       0.0221217850780970
+norm of energy C2^(3):       0.0000000000000000
+cpu time for calculate energy:       0.0323681831359863
+excitation energy for symmetry  2 state   1 order 3:       0.0161099081582526
+cpu time:       0.0740280151367188
+---------- symmetry 2 state  2 order 1
+norm of energy C1^(1)       0.0000000000000000
+norm of energy C2^(1):       0.5682959720098509
+cpu time for calculate energy:       0.0105049610137939
+excitation energy for symmetry  2 state   2 order 1:       0.0000000000000000
+cpu time:       0.0115399360656738
+---------- symmetry 2 state  2 order 2
+norm of vector C1^(1):       0.0000000000000000
+norm of vector C2^(1):       0.5682959720098509
+------ symmetry 2 state   2
+orthogonal to L^(0):       0.0000000000000000
+norm of R1^(1):       0.0000000000000000
+ -------------- 1 excitation information --------------
+ symi i ---> syma a
+ 1   1 a ---> 2   1 a       0.0000000000000000
+ 1   1 a ---> 2   2 a       0.0000000000000000
+ 1   1 a ---> 2   3 a       0.0000000000000000
+ 1   1 a ---> 2   4 a       0.0000000000000000
+ 1   1 a ---> 2   5 a       0.0000000000000000
+ 1   1 a ---> 2   6 a       0.0000000000000000
+ 1   1 a ---> 2   7 a       0.0000000000000000
+ 1   1 a ---> 2   8 a       0.0000000000000000
+ 1   1 a ---> 2   9 a       0.0000000000000000
+ 1   1 a ---> 2  10 a       0.0000000000000000
+ ------------------------------------------------------
+norm of R2^(1):       0.3069413535386606
+WARN
+ -------------- 2 excitation information --------------
+ symi i symj j ---> syma a symb b
+ 3   1 a| 3   2 b ---> 3  18 b| 4   2 a      -0.0488601823764742
+ 3   1 a| 3   2 b ---> 3   1 a| 4  28 b       0.0488601817335553
+ 3   1 a| 3   2 b ---> 3   1 a| 4  29 b      -0.0394299760930920
+ 3   1 a| 3   2 b ---> 3  18 b| 4   3 a       0.0394299760142439
+ 3   1 a| 4   2 b ---> 4   2 a| 4  31 b       0.0365395198086793
+ 3   2 b| 4   1 a ---> 4   5 a| 4  28 b      -0.0365395191520864
+ 3   1 a| 4   1 a ---> 4   2 a| 4   3 a      -0.0354380871468628
+ 3   2 b| 4   2 b ---> 4  28 b| 4  29 b      -0.0354380869689537
+ 3   1 a| 3   2 b ---> 3  19 b| 4   2 a       0.0324799026485282
+ 3   1 a| 3   2 b ---> 3   2 a| 4  28 b      -0.0324799021073221
+ ------------------------------------------------------
+norm of energy C1^(2)       0.0742033973129168
+norm of energy C2^(2):       0.1300239975808191
+cpu time for calculate energy:       0.4332690238952637
+excitation energy for symmetry  2 state   2 order 2:      -0.0720230519875540
+cpu time:       0.4368281364440918
+---------- symmetry 2 state  2 order 3
+norm of vector C1^(2):       0.0178556477109256
+norm of vector C2^(2):       0.1300239975808191
+ ----------------- iteration:                        1
+norm of R1:       0.0191488191408024
+ ----------------- iteration:                        2
+  Convergence information after     2 iterations: 
+  Largest element of residual vector : -0.12844526E-01.
+  Largest element of DIIS residual   : -0.12844526E-01.
+norm of R1:       0.0397372253645791
+ ----------------- iteration:                        3
+  Convergence information after     3 iterations: 
+  Largest element of residual vector : -0.15356358E-01.
+  Largest element of DIIS residual   : -0.53305621E-02.
+norm of R1:       0.0363055770865748
+ ----------------- iteration:                        4
+  Convergence information after     4 iterations: 
+  Largest element of residual vector : -0.62249486E-02.
+  Largest element of DIIS residual   : -0.20054068E-02.
+norm of R1:       0.0806820135158786
+ ----------------- iteration:                        5
+  Convergence information after     5 iterations: 
+  Largest element of residual vector : -0.20611348E-02.
+  Largest element of DIIS residual   : -0.22179753E-02.
+norm of R1:       0.0861754078410500
+ ----------------- iteration:                        6
+  Convergence information after     6 iterations: 
+  Largest element of residual vector : -0.22919046E-02.
+  Largest element of DIIS residual   : -0.22667039E-02.
+norm of R1:       0.0865491630761142
+ ----------------- iteration:                        7
+  Convergence information after     7 iterations: 
+  Largest element of residual vector : -0.23506808E-02.
+  Largest element of DIIS residual   : -0.15524024E-02.
+norm of R1:       0.0919200000008790
+ ----------------- iteration:                        8
+  Convergence information after     8 iterations: 
+  Largest element of residual vector : -0.15058641E-02.
+  Largest element of DIIS residual   :  0.68364650E-03.
+norm of R1:       0.1058256297544519
+ ----------------- iteration:                        9
+  Convergence information after     9 iterations: 
+  Largest element of residual vector : -0.55814921E-03.
+  Largest element of DIIS residual   :  0.27499947E-03.
+norm of R1:       0.1100218159408244
+ ----------------- iteration:                       10
+  Convergence information after    10 iterations: 
+  Largest element of residual vector :  0.20851821E-03.
+  Largest element of DIIS residual   :  0.12459944E-03.
+norm of R1:       0.1103781428751515
+ ----------------- iteration:                       11
+  Convergence information after    11 iterations: 
+  Largest element of residual vector :  0.10851186E-03.
+  Largest element of DIIS residual   :  0.87273045E-04.
+norm of R1:       0.1104036125552936
+ ----------------- iteration:                       12
+  Convergence information after    12 iterations: 
+  Largest element of residual vector :  0.75852692E-04.
+  Largest element of DIIS residual   :  0.58303574E-04.
+norm of R1:       0.1104422532193619
+ ----------------- iteration:                       13
+  Convergence information after    13 iterations: 
+  Largest element of residual vector :  0.50622589E-04.
+  Largest element of DIIS residual   :  0.11711258E-04.
+norm of R1:       0.1105051897215978
+ ----------------- iteration:                       14
+  Convergence information after    14 iterations: 
+  Largest element of residual vector :  0.64929996E-05.
+  Largest element of DIIS residual   :  0.32996406E-05.
+norm of R1:       0.1105091144027837
+ ----------------- iteration:                       15
+  Convergence information after    15 iterations: 
+  Largest element of residual vector :  0.21478528E-05.
+  Largest element of DIIS residual   :  0.17761772E-05.
+norm of R1:       0.1105109533575739
+ ----------------- iteration:                       16
+  Convergence information after    16 iterations: 
+  Largest element of residual vector :  0.15093859E-05.
+  Largest element of DIIS residual   :  0.11109014E-05.
+norm of R1:       0.1105120593778291
+ ----------------- iteration:                       17
+  Convergence information after    17 iterations: 
+  Largest element of residual vector :  0.94886050E-06.
+  Largest element of DIIS residual   :  0.47806684E-06.
+norm of R1:       0.1105147025402820
+ ----------------- iteration:                       18
+  Convergence information after    18 iterations: 
+  Largest element of residual vector :  0.56171908E-06.
+  Largest element of DIIS residual   :  0.57192130E-06.
+norm of R1:       0.1105155229191426
+ ----------------- iteration:                       19
+  Convergence information after    19 iterations: 
+  Largest element of residual vector :  0.67526711E-06.
+  Largest element of DIIS residual   :  0.39934271E-06.
+norm of R1:       0.1105149130295473
+ ----------------- iteration:                       20
+  Convergence information after    20 iterations: 
+  Largest element of residual vector :  0.46073933E-06.
+  Largest element of DIIS residual   : -0.30365720E-06.
+norm of R1:       0.1105151548129781
+ ----------------- iteration:                       21
+  Convergence information after    21 iterations: 
+  Largest element of residual vector :  0.29721013E-06.
+  Largest element of DIIS residual   :  0.25778796E-06.
+norm of R1:       0.1105156033520046
+ ----------------- iteration:                       22
+  Convergence information after    22 iterations: 
+  Largest element of residual vector :  0.28064172E-06.
+  Largest element of DIIS residual   :  0.26130602E-06.
+norm of R1:       0.1105157308046156
+ ----------------- iteration:                       23
+  Convergence information after    23 iterations: 
+  Largest element of residual vector :  0.28418621E-06.
+  Largest element of DIIS residual   :  0.23177164E-06.
+norm of R1:       0.1105150937842824
+ ----------------- iteration:                       24
+  Convergence information after    24 iterations: 
+  Largest element of residual vector :  0.25228157E-06.
+  Largest element of DIIS residual   : -0.20051772E-06.
+norm of R1:       0.1105141823619213
+ ----------------- iteration:                       25
+  Convergence information after    25 iterations: 
+  Largest element of residual vector :  0.20906197E-06.
+  Largest element of DIIS residual   : -0.15364001E-06.
+norm of R1:       0.1105130512976247
+ ----------------- iteration:                       26
+  Convergence information after    26 iterations: 
+  Largest element of residual vector :  0.16596265E-06.
+  Largest element of DIIS residual   : -0.12152807E-06.
+norm of R1:       0.1105111738858734
+ ----------------- iteration:                       27
+  Convergence information after    27 iterations: 
+  Largest element of residual vector :  0.11278980E-06.
+  Largest element of DIIS residual   :  0.81719704E-07.
+norm of R1:       0.1105098397893363
+ DIIS convergenced
+total cpu time for iteration:       0.1038048267364502
+------ symmetry 2 state   2
+orthogonal to L^(0):      -0.0000000000000000
+norm of R1^(2):       0.1105098397893363
+ -------------- 1 excitation information --------------
+ symi i ---> syma a
+ 3   1 a ---> 4   1 a       0.0694209870410814
+ 3   2 b ---> 4  27 b       0.0694202795561348
+ 3   2 b ---> 4  31 b      -0.0191805903333163
+ 3   1 a ---> 4   5 a      -0.0191805055617396
+ 3   2 b ---> 4  29 b       0.0184317739419317
+ 3   1 a ---> 4   3 a       0.0184317503259048
+ 3   1 a ---> 4   2 a      -0.0168958455879094
+ 3   2 b ---> 4  28 b      -0.0168955815761861
+ 3   1 a ---> 4   4 a       0.0087023456229173
+ 3   2 b ---> 4  30 b       0.0087023283605209
+ ------------------------------------------------------
+norm of R2^(2):       0.0738806160168939
+ -------------- 2 excitation information --------------
+ symi i symj j ---> syma a symb b
+ 3   1 a| 3   2 b ---> 3   1 a| 4  28 b      -0.0147649880228269
+ 3   1 a| 3   2 b ---> 3  18 b| 4   2 a       0.0147649875846819
+ 3   1 a| 3   2 b ---> 3   1 a| 4  27 b      -0.0124750922479261
+ 3   1 a| 3   2 b ---> 3  18 b| 4   1 a       0.0124750888677915
+ 3   2 b| 4   2 b ---> 4  28 b| 4  29 b       0.0095790522080850
+ 3   1 a| 4   1 a ---> 4   2 a| 4   3 a       0.0095790521994074
+ 1   3 a| 3   2 b ---> 1   2 a| 4  28 b      -0.0094468792554449
+ 1   6 b| 3   1 a ---> 1  34 b| 4   2 a      -0.0094468790385222
+ 3   1 a| 3   2 b ---> 3  18 b| 4   3 a      -0.0093863781834188
+ 3   1 a| 3   2 b ---> 3   1 a| 4  29 b       0.0093863780212708
+ ------------------------------------------------------
+norm of energy C1^(3)       0.0258366579551318
+norm of energy C2^(3):       0.0000000000000000
+cpu time for calculate energy:       0.0290617942810059
+excitation energy for symmetry  2 state   2 order 3:       0.0230621589484193
+cpu time:       0.1366648674011230
+total cpu time for EE-CPS(D) calculate       1.1109330654144287
+---------- EE-CPS(D) excitation energy ----------
+--- symmetry 2 state 1:
+CIS (a.u./eV):  0.380744 10.360561
+2nd order: -0.052327a.u.
+total excitation energy (a.u./eV):  0.328416  8.936666
+3rd order:  0.016110a.u.
+total excitation energy (a.u./eV):  0.344526  9.375039
+--- symmetry 2 state 2:
+CIS (a.u./eV):  0.512289 13.940082
+2nd order: -0.072023a.u.
+total excitation energy (a.u./eV):  0.440266 11.980235
+3rd order:  0.023062a.u.
+total excitation energy (a.u./eV):  0.463328 12.607788
+total cpu time for program:       2.1867899894714355

@@ -1,0 +1,497 @@
+ -----------------------------------------
+           start read input file          
+ -----------------------------------------
+--------------------------------------------------
+----------------- file CCSOINP -------------------
+ ref_state=rhf                                                                                                                                                                                           
+ shell=close                                                                                                                                                                                             
+ estate_sym=0/2/0/0/0/0/0/0                                                                                                                                                                              
+ ex_mult=1                                                                                                                                                                                               
+ iostate=0                                                                                                                                                                                               
+ spin_free=t                                                                                                                                                                                             
+--------------- input file end -------------------
+--------------------------------------------------
+ref_state = rhf
+shell = close
+ estate_sym =                         0                        2 
+                        0                        0                        0 
+                        0                        0                        0
+ex_mult =                        1
+iostate =                        0
+spin_free = t
+ -----------------------------------------
+               start readmodule           
+ -----------------------------------------
+symR: 1 1 1
+nirrep: 4
+dirprd:
+ 1 2 3 4 5 6 7 8
+ 2 1 4 3 6 5 8 7
+ 3 4 1 2 7 8 5 6
+ 4 3 2 1 8 7 6 5
+ 5 6 7 8 1 2 3 4
+ 6 5 8 7 2 1 4 3
+ 7 8 5 6 3 4 1 2
+ 8 7 6 5 4 3 2 1
+vrta(8) =   32   12   17   26    0    0    0    0
+vrtb(8) =   32   12   17   26    0    0    0    0
+popa(8) =    3    0    1    1    0    0    0    0
+popb(8) =    3    0    1    1    0    0    0    0
+iprcln                   32768
+iprcwd                    4096
+ichcsz                    4096
+nvvvv(ab,cd) =   232046736
+memory for nvvvv(MiB) =    1770.376099
+memory for nvvvv(GiB) =       1.728883
+nvvvo(ab,ci) =    13478704
+memory for nvvvo(MiB) =     102.834351
+memory for nvvvo(GiB) =       0.100424
+nvvoo(ab,ij) =      791536
+memory for nvvoo(MiB) =       6.038940
+memory for nvvoo(GiB) =       0.005897
+nvooo(ai,jk) =       47824
+memory for nvooo(MiB) =       0.364868
+noooo(ij,kl) =        3152
+memory for noooo(MiB) =       0.024048
+nOcc =   10
+nVir =  174
+popo =    6    0    2    2    0    0    0    0
+popv =   64   24   34   52    0    0    0    0
+nCore =              1342177280
+SCF energy =     -76.0604663320273175
+-----------------------------------------
+           start allocate iCore          
+-----------------------------------------
+iFree =       65940789
+maxCore =  1276236491
+free memory(GiB):       9.508703
+-----------------------------------------
+               start loadSCF             
+-----------------------------------------
+ number of orbital:                      184
+ ------------------ orbital energy -----------------
+ occupied orbital
+symmetry:    1
+    1    1   alpha     -20.5676133117838909
+    2    2   alpha      -1.3527402875249228
+    3    3   alpha      -0.5849373926789279
+    4    4   beta      -20.5676133117838909
+    5    5   beta       -1.3527402875249228
+    6    6   beta       -0.5849373926789279
+symmetry:    2
+symmetry:    3
+    7    1   alpha      -0.5102576447146369
+    8    2   beta       -0.5102576447146369
+symmetry:    4
+    9    1   alpha      -0.7164336972618137
+   10    2   beta       -0.7164336972618137
+ virtual orbital
+symmetry:    1
+   11    1   alpha       0.0294082223315448
+   12    2   alpha       0.1359280782475384
+   13    3   alpha       0.1751861309278626
+   14    4   alpha       0.2449923733662783
+   15    5   alpha       0.3103485798392540
+   16    6   alpha       0.4377883553676052
+   17    7   alpha       0.6584606173910850
+   18    8   alpha       0.7082090605440658
+   19    9   alpha       0.8310077215447428
+   20   10   alpha       0.8916942223957600
+   21   11   alpha       0.9620330160966105
+   22   12   alpha       1.0217717130480874
+   23   13   alpha       1.1822082448715803
+   24   14   alpha       1.5362442803522527
+   25   15   alpha       1.8038844736652744
+   26   16   alpha       2.1189046445764514
+   27   17   alpha       2.3260305732386533
+   28   18   alpha       2.4185795832797754
+   29   19   alpha       2.4790946596222860
+   30   20   alpha       2.7723481947261885
+   31   21   alpha       3.7453740790072301
+   32   22   alpha       4.1673578238076141
+   33   23   alpha       4.3755641905892855
+   34   24   alpha       4.7260615377756396
+   35   25   alpha       5.3305759243210691
+   36   26   alpha       5.6676948710281927
+   37   27   alpha       6.1782227983356961
+   38   28   alpha       6.8989287559065122
+   39   29   alpha       7.3267273913559690
+   40   30   alpha       7.5373090745420068
+   41   31   alpha       7.9023258898775497
+   42   32   alpha      15.7739092370300433
+   43   33   beta        0.0294082223315448
+   44   34   beta        0.1359280782475384
+   45   35   beta        0.1751861309278626
+   46   36   beta        0.2449923733662783
+   47   37   beta        0.3103485798392540
+   48   38   beta        0.4377883553676052
+   49   39   beta        0.6584606173910850
+   50   40   beta        0.7082090605440658
+   51   41   beta        0.8310077215447428
+   52   42   beta        0.8916942223957600
+   53   43   beta        0.9620330160966105
+   54   44   beta        1.0217717130480874
+   55   45   beta        1.1822082448715803
+   56   46   beta        1.5362442803522527
+   57   47   beta        1.8038844736652744
+   58   48   beta        2.1189046445764514
+   59   49   beta        2.3260305732386533
+   60   50   beta        2.4185795832797754
+   61   51   beta        2.4790946596222860
+   62   52   beta        2.7723481947261885
+   63   53   beta        3.7453740790072301
+   64   54   beta        4.1673578238076141
+   65   55   beta        4.3755641905892855
+   66   56   beta        4.7260615377756396
+   67   57   beta        5.3305759243210691
+   68   58   beta        5.6676948710281927
+   69   59   beta        6.1782227983356961
+   70   60   beta        6.8989287559065122
+   71   61   beta        7.3267273913559690
+   72   62   beta        7.5373090745420068
+   73   63   beta        7.9023258898775497
+   74   64   beta       15.7739092370300433
+symmetry:    2
+   75    1   alpha       0.2653260273240263
+   76    2   alpha       0.7224386297538136
+   77    3   alpha       0.9225173085348841
+   78    4   alpha       1.1764651029452287
+   79    5   alpha       1.5108805446928524
+   80    6   alpha       2.3162321340347769
+   81    7   alpha       2.8849383795974104
+   82    8   alpha       4.0183501740750032
+   83    9   alpha       4.3781348884288898
+   84   10   alpha       5.1537462134224281
+   85   11   alpha       7.3151573746090728
+   86   12   alpha       7.3557073868696730
+   87   13   beta        0.2653260273240263
+   88   14   beta        0.7224386297538136
+   89   15   beta        0.9225173085348841
+   90   16   beta        1.1764651029452287
+   91   17   beta        1.5108805446928524
+   92   18   beta        2.3162321340347769
+   93   19   beta        2.8849383795974104
+   94   20   beta        4.0183501740750032
+   95   21   beta        4.3781348884288898
+   96   22   beta        5.1537462134224281
+   97   23   beta        7.3151573746090728
+   98   24   beta        7.3557073868696730
+symmetry:    3
+   99    1   alpha       0.1586372372009116
+  100    2   alpha       0.3003415339543310
+  101    3   alpha       0.7315956564140210
+  102    4   alpha       0.8463600579639732
+  103    5   alpha       0.9183005789920422
+  104    6   alpha       1.0828860451869196
+  105    7   alpha       1.5844217474880957
+  106    8   alpha       2.2626987362849893
+  107    9   alpha       2.4206616749658489
+  108   10   alpha       2.6976844708726859
+  109   11   alpha       4.0851534010054946
+  110   12   alpha       4.2905681966943661
+  111   13   alpha       4.4061972470554709
+  112   14   alpha       5.5259565250668627
+  113   15   alpha       6.7095263573883637
+  114   16   alpha       7.1335558715374958
+  115   17   alpha       7.2529446750882487
+  116   18   beta        0.1586372372009116
+  117   19   beta        0.3003415339543310
+  118   20   beta        0.7315956564140210
+  119   21   beta        0.8463600579639732
+  120   22   beta        0.9183005789920422
+  121   23   beta        1.0828860451869196
+  122   24   beta        1.5844217474880957
+  123   25   beta        2.2626987362849893
+  124   26   beta        2.4206616749658489
+  125   27   beta        2.6976844708726859
+  126   28   beta        4.0851534010054946
+  127   29   beta        4.2905681966943661
+  128   30   beta        4.4061972470554709
+  129   31   beta        5.5259565250668627
+  130   32   beta        6.7095263573883637
+  131   33   beta        7.1335558715374958
+  132   34   beta        7.2529446750882487
+symmetry:    4
+  133    1   alpha       0.0476882012917707
+  134    2   alpha       0.1830229101418928
+  135    3   alpha       0.2273956211810587
+  136    4   alpha       0.3658266188293552
+  137    5   alpha       0.4664503545342102
+  138    6   alpha       0.5994561498258397
+  139    7   alpha       0.9129301314094453
+  140    8   alpha       0.9308211408224185
+  141    9   alpha       1.0438970215068291
+  142   10   alpha       1.1090786916250537
+  143   11   alpha       1.2601740066661482
+  144   12   alpha       1.8202169028667512
+  145   13   alpha       1.9872775332687704
+  146   14   alpha       2.4427503532470274
+  147   15   alpha       2.6763115336299736
+  148   16   alpha       2.8178782648298326
+  149   17   alpha       3.6549166172044223
+  150   18   alpha       4.2489777261152115
+  151   19   alpha       4.5175125055476446
+  152   20   alpha       4.8467958622490448
+  153   21   alpha       5.1493120741196856
+  154   22   alpha       5.2555071691574655
+  155   23   alpha       6.5135944621851083
+  156   24   alpha       7.3075033537103957
+  157   25   alpha       7.9267696726343733
+  158   26   alpha       8.8081108599582141
+  159   27   beta        0.0476882012917707
+  160   28   beta        0.1830229101418928
+  161   29   beta        0.2273956211810587
+  162   30   beta        0.3658266188293552
+  163   31   beta        0.4664503545342102
+  164   32   beta        0.5994561498258397
+  165   33   beta        0.9129301314094453
+  166   34   beta        0.9308211408224185
+  167   35   beta        1.0438970215068291
+  168   36   beta        1.1090786916250537
+  169   37   beta        1.2601740066661482
+  170   38   beta        1.8202169028667512
+  171   39   beta        1.9872775332687704
+  172   40   beta        2.4427503532470274
+  173   41   beta        2.6763115336299736
+  174   42   beta        2.8178782648298326
+  175   43   beta        3.6549166172044223
+  176   44   beta        4.2489777261152115
+  177   45   beta        4.5175125055476446
+  178   46   beta        4.8467958622490448
+  179   47   beta        5.1493120741196856
+  180   48   beta        5.2555071691574655
+  181   49   beta        6.5135944621851083
+  182   50   beta        7.3075033537103957
+  183   51   beta        7.9267696726343733
+  184   52   beta        8.8081108599582141
+ ---------------------------------------------------
+ norm of fij:   3.9703009579358615E-007
+ norm of fab:   3.3853254735072956E-006
+ norm of fia:   1.1870364278388829E-006
+ iop =                        0
+ norm of ijkl:    7.055776768637966     
+ norm of ijka:    3.213306665983949     
+ norm of abij:    1.521861855766138     
+ norm of iabj:    22.65667532634171     
+ norm of abci:    6.436502266340528     
+ norm of abcd:    48.51763375165206     
+cpu time for prepare:       0.3464400768280029
+norm of MP2 amplitudes:       0.2527922026894496
+norm of Fac:      55.3209053248267182
+norm of Fki:      29.2184815292524860
+norm of Wkaci:      22.6852380158655933
+ cpu time for calculate intermidate MP2t, Fac, Fki and Wkaci: 
+   0.1004881858825684     
+ Set the 1e lowest OED as initial guess
+-------- symmetry of excitation state :    1
+-------- symmetry of excitation state :    2
+------ root 2  1 ------
+initial excitation energy:       0.5579458460064076
+ -------------- 1 excitation information --------------
+ symi i ---> syma a
+ 3   1 a ---> 4   1 a       0.7071067811865475
+ 3   2 b ---> 4  27 b       0.7071067811865475
+ 1   1 a ---> 2   1 a       0.0000000000000000
+ 1   1 a ---> 2   2 a       0.0000000000000000
+ ------------------------------------------------------
+------ root 2  2 ------
+initial excitation energy:       0.6932805548565296
+ -------------- 1 excitation information --------------
+ symi i ---> syma a
+ 3   1 a ---> 4   2 a       0.7071067811865475
+ 3   2 b ---> 4  28 b       0.7071067811865475
+ 1   1 a ---> 2   1 a       0.0000000000000000
+ 1   1 a ---> 2   2 a       0.0000000000000000
+ ------------------------------------------------------
+-------- symmetry of excitation state :    3
+-------- symmetry of excitation state :    4
+CPU time for prepare Davidson iteration:       0.1473379135131836
+--------------------------------------------------
+                CIS(Doo) calculate                
+--------------------------------------------------
+-------------- symmetry 1
+CPU time for CIS(Doo) symmetry  1:       0.0002610683441162
+-------------- symmetry 2
+WARN: Davidson may have some error for nroot>1
+ Davidson convergence criteria:   1.0000000000000000E-008
+max cycle for Davidson iteration:                      50
+max dimension of Davidson iteration matrix                      20
+--------- Davidson iteration:    1
+eigenvalue for state   1:       0.4811509244700496
+eigenvalue for state   2:       0.5942404833696138
+max element of error vector for root  1 after   1 iterations:       0.0679800766030012
+max element of error vector for root  2 after   1 iterations:      -0.0661517630254461
+--------- Davidson iteration:    2
+eigenvalue for state   1:       0.3298369989520358
+eigenvalue for state   2:       0.4376813825648410
+max element of error vector for root  1 after   2 iterations:       0.0048450637658400
+max element of error vector for root  2 after   2 iterations:       0.0082490029643915
+--------- Davidson iteration:    3
+eigenvalue for state   1:       0.3273821846266794
+eigenvalue for state   2:       0.4323815311436064
+max element of error vector for root  1 after   3 iterations:      -0.0096521631310715
+max element of error vector for root  2 after   3 iterations:      -0.0178908695722479
+--------- Davidson iteration:    4
+eigenvalue for state   1:       0.3255540829368998
+eigenvalue for state   2:       0.4206014448060496
+max element of error vector for root  1 after   4 iterations:      -0.0038376897656225
+max element of error vector for root  2 after   4 iterations:       0.0140621940624419
+--------- Davidson iteration:    5
+eigenvalue for state   1:       0.3253330863623372
+eigenvalue for state   2:       0.4482643141006984
+max element of error vector for root  1 after   5 iterations:      -0.0013567307245986
+max element of error vector for root  2 after   5 iterations:       0.0088902590099323
+--------- Davidson iteration:    6
+eigenvalue for state   1:       0.3252860830057083
+eigenvalue for state   2:       0.4466143746527520
+max element of error vector for root  1 after   6 iterations:      -0.0006292274374643
+max element of error vector for root  2 after   6 iterations:      -0.0039933430205690
+--------- Davidson iteration:    7
+eigenvalue for state   1:       0.3252836430175673
+eigenvalue for state   2:       0.4464460047873348
+max element of error vector for root  1 after   7 iterations:      -0.0000872804436752
+max element of error vector for root  2 after   7 iterations:      -0.0008902352509033
+--------- Davidson iteration:    8
+eigenvalue for state   1:       0.3252837367766424
+eigenvalue for state   2:       0.4463947409011189
+max element of error vector for root  1 after   8 iterations:       0.0000665280175441
+max element of error vector for root  2 after   8 iterations:       0.0011516869592618
+--------- Davidson iteration:    9
+eigenvalue for state   1:       0.3252837615747738
+eigenvalue for state   2:       0.4463848367446065
+max element of error vector for root  1 after   9 iterations:      -0.0000091210359834
+max element of error vector for root  2 after   9 iterations:      -0.0002350619426263
+--------- Davidson iteration:   10
+eigenvalue for state   1:       0.3252837684334751
+eigenvalue for state   2:       0.4463842074526878
+ finish generate new basis file
+max element of error vector for root  1 after  10 iterations:      -0.0000024016985216
+max element of error vector for root  2 after  10 iterations:       0.0000587789885899
+--------- Davidson iteration:   11
+eigenvalue for state   1:       0.3252837696047937
+eigenvalue for state   2:       0.4463842063735752
+max element of error vector for root  1 after  11 iterations:      -0.0000006831242433
+max element of error vector for root  2 after  11 iterations:      -0.0000241792960705
+--------- Davidson iteration:   12
+eigenvalue for state   1:       0.3252837695304884
+eigenvalue for state   2:       0.4463842007477937
+max element of error vector for root  1 after  12 iterations:       0.0000003448136229
+max element of error vector for root  2 after  12 iterations:      -0.0000168801592163
+--------- Davidson iteration:   13
+eigenvalue for state   1:       0.3252837693507182
+eigenvalue for state   2:       0.4463841892614821
+max element of error vector for root  1 after  13 iterations:       0.0000000688589311
+max element of error vector for root  2 after  13 iterations:      -0.0000076302106503
+--------- Davidson iteration:   14
+eigenvalue for state   1:       0.3252837694068301
+eigenvalue for state   2:       0.4463841806249736
+max element of error vector for root  1 after  14 iterations:      -0.0000000219249573
+max element of error vector for root  2 after  14 iterations:       0.0000020718776426
+--------- Davidson iteration:   15
+eigenvalue for state   1:       0.3252837694245511
+eigenvalue for state   2:       0.4463841788986483
+max element of error vector for root  1 after  15 iterations:       0.0000000021328570
+Davidson for root  1 converged
+max element of error vector for root  2 after  15 iterations:       0.0000005551897066
+--------- Davidson iteration:   16
+eigenvalue for state   1:       0.3252837694245649
+eigenvalue for state   2:       0.4463841788160365
+max element of error vector for root  1 after  16 iterations:       0.0000000021122856
+Davidson for root  1 converged
+max element of error vector for root  2 after  16 iterations:       0.0000002961522125
+--------- Davidson iteration:   17
+eigenvalue for state   1:       0.3252837694242059
+eigenvalue for state   2:       0.4463841788802244
+max element of error vector for root  1 after  17 iterations:      -0.0000000019868955
+Davidson for root  1 converged
+max element of error vector for root  2 after  17 iterations:      -0.0000000478264469
+--------- Davidson iteration:   18
+eigenvalue for state   1:       0.3252837694237362
+eigenvalue for state   2:       0.4463841788787798
+ finish generate new basis file
+max element of error vector for root  1 after  18 iterations:       0.0000000020089108
+Davidson for root  1 converged
+max element of error vector for root  2 after  18 iterations:      -0.0000158257372640
+--------- Davidson iteration:   19
+eigenvalue for state   1:       0.3252837694237654
+eigenvalue for state   2:       0.4463841788787216
+max element of error vector for root  1 after  19 iterations:      -0.0000000020061947
+Davidson for root  1 converged
+max element of error vector for root  2 after  19 iterations:      -0.0000000135983816
+--------- Davidson iteration:   20
+eigenvalue for state   1:       0.3252837694237261
+eigenvalue for state   2:       0.4463841788724036
+max element of error vector for root  1 after  20 iterations:       0.0000000021086688
+Davidson for root  1 converged
+max element of error vector for root  2 after  20 iterations:      -0.0000000069962430
+Davidson for root  2 converged
+All roots converged
+root  1 pass test
+root  2 pass test
+CPU time for CIS(Doo) symmetry  2:       3.1199190616607666
+-------------- symmetry 3
+CPU time for CIS(Doo) symmetry  3:       0.0003058910369873
+-------------- symmetry 4
+CPU time for CIS(Doo) symmetry  4:       0.0002839565277100
+totaL CPU time for CIS(Doo) calculation:       3.1207990646362305
+----------------------------------------------
+                CIS(Doo) result               
+----------------------------------------------
+excitation energy for symmetry:    2
+state    1:    0.325284a.u.    8.851420eV
+percentage of sigle excitation:       0.9225298254591275
+ -------------- 1 excitation information --------------
+ symi i ---> syma a
+ 3   2 b ---> 4  27 b       0.5887015097617164
+ 3   1 a ---> 4   1 a       0.5887015097609388
+ 3   2 b ---> 4  28 b      -0.2883619528838301
+ 3   1 a ---> 4   2 a      -0.2883619528836109
+ 3   2 b ---> 4  29 b      -0.1400587856861470
+ 3   1 a ---> 4   3 a      -0.1400587856860661
+ 3   2 b ---> 4  31 b       0.1022783728847770
+ 3   1 a ---> 4   5 a       0.1022783728847178
+ 3   2 b ---> 4  35 b      -0.0234898840055773
+ 3   1 a ---> 4   9 a      -0.0234898840055624
+ ------------------------------------------------------
+ -------------- 2 excitation information --------------
+ symi i symj j ---> syma a symb b
+ 1   1 a| 1   2 a ---> 1  31 a| 2   4 a       0.5887015097617164
+ 1   1 a| 1   2 a ---> 1  17 a| 2   3 a       0.5887015097609388
+ 1   1 a| 1   2 a ---> 1  32 a| 2   4 a      -0.2883619528838301
+ 1   1 a| 1   2 a ---> 1  18 a| 2   3 a      -0.2883619528836109
+ 1   1 a| 1   2 a ---> 1  33 b| 2   4 a      -0.1400587856861470
+ 1   1 a| 1   2 a ---> 1  19 a| 2   3 a      -0.1400587856860661
+ 1   1 a| 1   2 a ---> 1  35 b| 2   4 a       0.1022783728847770
+ 1   1 a| 1   2 a ---> 1  21 a| 2   3 a       0.1022783728847178
+ 3   1 a| 3   2 b ---> 3  11 a| 4  36 b      -0.0532813679857253
+ 3   1 a| 3   2 b ---> 3  28 b| 4  10 a       0.0532813679856736
+ ------------------------------------------------------
+state    2:    0.446384a.u.   12.146730eV
+percentage of sigle excitation:       0.9219319854422485
+ -------------- 1 excitation information --------------
+ symi i ---> syma a
+ 3   2 b ---> 4  28 b       0.4980716194567494
+ 3   1 a ---> 4   2 a       0.4980716194211517
+ 3   1 a ---> 4   3 a      -0.4159066296765813
+ 3   2 b ---> 4  29 b      -0.4159066296634868
+ 3   1 a ---> 4   1 a       0.1494952753355877
+ 3   2 b ---> 4  27 b       0.1494952752095812
+ 3   1 a ---> 4   6 a      -0.0893843335503476
+ 3   2 b ---> 4  32 b      -0.0893843335488669
+ 3   2 b ---> 4  30 b      -0.0708245706729087
+ 3   1 a ---> 4   4 a      -0.0708245706716866
+ ------------------------------------------------------
+ -------------- 2 excitation information --------------
+ symi i symj j ---> syma a symb b
+ 1   1 a| 1   2 a ---> 1  32 a| 2   4 a       0.4980716194567494
+ 1   1 a| 1   2 a ---> 1  18 a| 2   3 a       0.4980716194211517
+ 1   1 a| 1   2 a ---> 1  19 a| 2   3 a      -0.4159066296765813
+ 1   1 a| 1   2 a ---> 1  33 b| 2   4 a      -0.4159066296634868
+ 1   1 a| 1   2 a ---> 1  17 a| 2   3 a       0.1494952753355877
+ 1   1 a| 1   2 a ---> 1  31 a| 2   4 a       0.1494952752095812
+ 1   1 a| 1   2 a ---> 1  22 a| 2   3 a      -0.0893843335503476
+ 1   1 a| 1   2 a ---> 1  36 b| 2   4 a      -0.0893843335488669
+ 1   1 a| 1   2 a ---> 1  34 b| 2   4 a      -0.0708245706729087
+ 1   1 a| 1   2 a ---> 1  20 a| 2   3 a      -0.0708245706716866
+ ------------------------------------------------------
+total cpu time for program:       3.7164480686187744

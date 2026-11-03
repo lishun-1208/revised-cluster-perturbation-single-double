@@ -1,0 +1,21 @@
+      SUBROUTINE rmso(filename)
+C
+C THIS ROUTINE WRITES OUT ALL IRREPS OF A SYMMETRY PACKED DISTRIBUTION.
+C
+C      Z  - VECTOR HOLDING THE LIST.
+C  LENGTH - THE TOTAL LENGTH.
+C  ICACHE - THE CACHE TO BE USED IN I/O OPERATIONS.
+C  LSTNUM - THE LIST NUMBER WHICH Z IS WRITTEN TO.
+C
+CEND
+      character(len=8), intent(in) :: filename 
+      character(len=10) filename2
+      filename2(1:8)=filename(1:8)
+      filename2(9:10)=".c"
+      OPEN(UNIT=168, FILE=FILENAME, FORM='UNFORMATTED')
+      CLOSE(168, STATUS='DELETE')
+      OPEN(UNIT=168, FILE=FILENAME2, FORM='UNFORMATTED')
+      CLOSE(168, STATUS='DELETE')
+      
+      RETURN
+      END

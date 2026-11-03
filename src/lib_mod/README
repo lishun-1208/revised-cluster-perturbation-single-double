@@ -1,0 +1,24 @@
+When using the "libsrint" library, the minimum requirement is to set the initial value of the parameter.
+
+These parameters are all integers and each group selects only one of the items.
+These options can be determined by the keywords in the ZMAT file.
+
+
+{Single precision : isd=1 ; prec=4 (%single in ZMAT file)
+ or
+ Double precision : isd=2 ; prec=8}
+
+
+{totgpu=0 for invoke CPU 
+ or
+ totgpu=1 for invoke GPU (%gpu in ZMAT file)}
+
+
+{cc_int = 1 for CFOUR 
+        = 2 for amesp (%amesp in ZMAT file)
+        = 3 for pyscf (%pyscf in ZMAT file)} 
+
+
+logical ldebug for debug
+
+

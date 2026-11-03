@@ -1,0 +1,2 @@
+the compile of cfour2cc need link with libr in CFOUR program
+if this program is compiled, can use cfourscript to replace python procedure in job

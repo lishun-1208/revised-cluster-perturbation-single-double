@@ -1,0 +1,13 @@
+*.i
+*.i90
+*.mod
+*.o
+*.a
+*.so
+/src/lib
+/src/bin
+ZMAT
+__pycache__/
+.config.temp
+/build-logs
+BUILD.md

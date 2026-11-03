@@ -1,0 +1,19 @@
+# generate integral file
+python mol.py > out.pre
+xgetHF >> out.pre
+
+# CPS(D) calculation
+xCPSd.SF > out.cpsd
+xEE-CIS.SF > out.cis
+xEE-CPSd.SF > out.eecpsd
+
+# grCPS(D) calculation
+xgrCPSd.SF > out.grcpsd
+xCISdoo.SD.SF > out.cisdoo
+xEE-grCPSd.SF > out.eegrcpsd
+
+# EE-rCPS(D) calcylation
+# file CPSd_T__ is generate by xCPSd.SF
+# and file iCPSd_T_ is generate by xgrCPSd.SF
+mv ./tmp/CPSd_T__ ./tmp/iCPSd_T_
+xEE-grCPSd.SF > out.eercpsd

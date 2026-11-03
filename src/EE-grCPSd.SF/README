@@ -1,0 +1,14 @@
+spin free excited state grCPS(D) program based on CPS(D)(ref DOI: 10.1063/1.5053167), with:
+only support iop=0
+zorth order Jacobian slect as CIS(Doo) Jacobian, also zorth order excited state
+
+file require:
+need perturbation T store in file 'iCPSd_T_', (T12^(1),T12^(2),...)
+need CIS(Doo) eigenvalues and eigenvectors store in file 'CISdoo_sym<n>', (e_1,R1_1,R2_1,...)
+
+
+file generate:
+result store in file 'iCPSd_sym': n order val only need n-1 order vec
+    store eigenvalues and eigenvectors, order by order,
+    ie, (e1^1, v1^0), (e2^1, v2^0),... 0th order, total estate_sym
+        (e1^2, v1^1), (e2^2, v2^1),... 1th order

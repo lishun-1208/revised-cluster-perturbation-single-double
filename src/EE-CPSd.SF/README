@@ -1,0 +1,9 @@
+spin free excited state CPS(D) program(ref DOI: 10.1063/1.5053167)
+
+need CPS(D) perturbation T store in file 'CPSd_T__'
+need CIS eigenvalues and eigenvectors are store in file 'CIS_sym<n>'
+
+file 'CPSd_sym<n>': n order val only need n-1 order vec
+    store eigenvalues and eigenvectors, order by order,
+    ie, (e1^0, v1^0), (e2^0, v2^0),... 0th order, total estate_sym
+        (e1^1, v1^1), (e2^1, v2^1),... 1th order

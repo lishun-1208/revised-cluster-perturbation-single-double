@@ -1,0 +1,4 @@
+spin free CIS(Doo) program with both single and double
+only support iop=0
+
+result store in file 'CISdoo_sym<n>', with structure: (e1,Rs1, Rd2), (e2,Rs2,Rd2),...

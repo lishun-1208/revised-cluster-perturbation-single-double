@@ -1,0 +1,26 @@
+      SUBROUTINE DOSODIIS2(ITER, VECINOUT, LENGTH, MAXDIM, SCR, MAXCOR,
+     &                    RESMDIIS)
+C
+      use mod_iop
+      IMPLICIT NONE
+!     INTEGER :: PREC, ISD
+!     COMMON/PRECSOC/PREC, ISD
+      INTEGER, intent(in) :: ITER, LENGTH, MAXDIM
+      INTEGER*8, intent(in) :: MAXCOR
+C
+      DOUBLE PRECISION, intent(inout) :: RESMDIIS
+      DOUBLE PRECISION, intent(inout) :: SCR(MAXCOR), VECINOUT(LENGTH)
+C
+      INTEGER :: I, J, K, N, I0, I11, I12, I2, IEND, MAXDIM1, INDXF
+      DOUBLE PRECISION :: FACT, RESMITER, X
+C
+      IF(PREC==8) THEN 
+      CALL DOSODIIS2_D(ITER, VECINOUT, LENGTH, MAXDIM, SCR, MAXCOR,
+     &                    RESMDIIS)
+      ELSEIF(PREC==4) THEN 
+      CALL DOSODIIS2_S(ITER, VECINOUT, LENGTH, MAXDIM, SCR, MAXCOR,
+     &                    RESMDIIS)
+      ENDIF
+      RETURN
+      END
+C

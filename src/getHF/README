@@ -1,0 +1,9 @@
+this program use to conver 2e-integral and Fock matrix:
+    1. get pure alpha part for RHF state
+    2. combine spin adapted integtral to spin free integral
+    3. spin free orbital energy in node 'orb_energy_no_spin'
+
+CCSOINP:
+spin_free=t/f
+    contral whether generate spin free integeral
+    default: t

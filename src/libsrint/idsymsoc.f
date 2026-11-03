@@ -1,0 +1,30 @@
+
+      INTEGER*8 FUNCTION IDSYMSOC(IRREPX,POPP, POPQ, ioppq, 
+     &           POPR, POPS, ioprs)
+C
+C THIS ROUTINE RETURNS THE TOTAL SIZE OF A SYMMETRY PACKED
+C  DISTRIBUTION (FOR ALL IRREPS).  ITYPL IS THE SYMMETRY TYPE
+C  OF THE DISTRIBUTION MEMBERS, ITYPR IS THE SYMMETRY TYPE OF
+C  THE DISTRIBUTIONS.  NOTE THAT CHANGING THE MEANING OF THESE
+C  VARIABLES MAKES NO DIFFERENCE.
+C
+CEND
+      use mod_symm
+      IMPLICIT INTEGER (A-Z)
+C
+      integer, external :: irpdso
+      if(irrepx>8) then 
+        write(6,*)'error in idsymsoc, nirrep>8' 
+        stop
+      endif
+C
+      IDSYMSOC=0
+      DO 10 IRREPR=1,NIRREP 
+C       write(6,*)'idsymsoc', irrepr, idsymsoc
+       IRREPL=DIRPRD(IRREPR,IRREPX)
+       IDSYMSOC=IDSYMSOC+
+     & IRPDSO(IRREPL,POPP, POPQ, IOPPQ)*IRPDSO(IRREPR,POPR, POPS, IOPRS)
+10    CONTINUE
+C
+      RETURN
+      END

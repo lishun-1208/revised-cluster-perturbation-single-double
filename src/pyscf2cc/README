@@ -1,0 +1,62 @@
+1、获取轨道，对于A,B相同的自旋轨道的用RHF对象处理，不同的用UHF对象处理
+2、获取Fock矩阵，将对角元作为轨道能量
+3、重排轨道：轨道按照先O后V，对称性由小到大，能量由低到高排序
+4、获取AO积分
+5、获取下列反对称的2e MO积分，其中I(i,a,b,j)按(b,i,a,j)排序：
+    abcdAAAA=<ab|cd>-<ba|cd>, abcdBBBB, abcdABAB=<aB|cD>
+    abijAAAA,                 abijBBBB, abijABAB
+    ijklAAAA,                 ijklBBBB, ijklABAB
+    abciAAAA=<ab|ci>-<ba|ci>, abciBBBB, abciABAB=<aB|cI>, abciBABA=<Ab|Ci>
+    ijkaAAAA,                 ijkaBBBB, ijkaABAB,         ijkaBABA
+    iabjAAAA=<ia|bj>-<ai|bj>, iabjBBBB, iabjABAB=<iA|bJ>, iabjABBA=-<Ai|Bj>, iabjBAAB=-<aI||bJ>
+    从而需要的MO积分有：pyscf中的双电子积分为(pq|rs)=<pr|qs>，需要转置
+    <vv|vv>, <VV|VV>, <vV|vV>
+    <vv|oo>, <VV|OO>, <vV|oO>
+    <oo|oo>, <OO|OO>, <oO|oO>
+    <vv|vo>, <VV|VO>, <vV|vO>, <Vv|Vo>
+    <oo|ov>, <OO|OV>, <oO|oV>, <Oo|Ov>
+    <ov|vo>, <vo|vo>, <OV|VO>, <VO|VO>, <oV|vO>, <oV|Vo>, <Ov|vO>
+    对于<pq||rs>
+    do irrep_rs = 1, nirrep
+        do irrep_s = 1, nirrep
+            do s = 1, n_s
+                do r = 1, n_s
+                    分块获取对某rs的MO积分<pq|rs>=(pr|qs), 并反对称化(若需要)
+                    按以下顺序写入文件
+                    注意对每个irrep_rs，需要补齐到4096个real*8的整数倍长度
+                    若pq,rs满足交换反对称, 则仅储存p<q,r<s的部分
+                    do irrep_q = 1, nirrep
+                        do q = 1, n_q
+                            do p = 1, n_p
+    5.1. 库伦积分文件名如下：
+        ABCDAA__, ABCDBB__, ABCDAB__
+        ABIJAA__, ABIJBB__, ABIJAB__
+        IJKLAA__, IJKLBB__, IJKLAB__
+        ABCIAA__, ABCIBB__, ABCIAB__, ABCIBA__
+        IJKAAA__, IJKABB__, IJKAAB__, IJKABA__
+        BIAJAAAA, BIAJBBBB, BIAJAABB, BIAJBABA, BIAJABAB
+    5.2. 对于除库伦积分外的2e积分，命名如：“<head>2e<n><spin>”
+        <n>取下列值：
+        1: abcd
+        2: abij
+        3: ijkl
+        4: abci
+        5: ijka
+        6: iabj
+        <spin>为各指标的自旋
+        例如，若<head>为'I', <spin>为ABAB, 则积分名可为：‘I2e6ABAB’
+    5.3. 对RHF的2e积分，因为I(pq,rs)=I(pQ,rS)+I(Pq,rS)=I(pQ,rS)+I(pQ,Rs)
+        只保存独立分量，即
+        abcd, abij, ijkl, abci, ijka的ABAB
+        iabj的ABAB, BAAB, 尽管iabjAAAA=iabjABAB+iabjBAAB, 但依然保存AAAA分量
+6. 获取下列的1e MO积分，其中I(i,a)按(a,i)排序：
+    abAA, abBB
+    ijAA, ijBB
+    iaAA, iaBB
+    6.1. Fock矩阵文件名如下：
+        FABAA___, FABBB___
+        FIJAA___, FIJBB___
+        FAIAA___, FAIBB___
+    6.2. 对于除Fock矩阵外的1e积分, 将Fock矩阵文件名替换相应文件头<head>
+    6.3. 对RHF的1e积分, 只保存独立分量，即
+        abAA, ijAA, iaAA

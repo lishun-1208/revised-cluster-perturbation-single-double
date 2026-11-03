@@ -1,0 +1,29 @@
+C
+      SUBROUTINE MINV(AB,N,LDA,SCRATCH,DET,EPS,M,MODE)
+C
+C     A subroutine that calculates the determinant and inverse of
+C          a matrix, as well as solving systems of linear equations.
+C     Martin J. McBride.  11/25/85.
+C     General Electric CRD, Information System Operation.
+C
+C  THE COMMENTS ABOVE REFER TO AN OLD "SCIPORT" VERSION OF THIS ROUTINE,
+C  PRESUMABLY WRITTEN BY MR. MC BRIDE.  UNFORTUNATELY, IT SEEMS THAT 
+C  HE IS A BAD PROGRAMMER AND THIS ROUTINE DID NOT WORK.  MINV IS NOW
+C  A SIMPLE INTERFACE TO LINPACK ROUTINES WHICH *WORK*
+C
+CEND
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      DIMENSION AB(LDA,1),SCRATCH(1)
+C
+      IOFF=1+N
+      CALL DGECO(AB,LDA,N,SCRATCH,DET,SCRATCH(IOFF))
+      IF(M.EQ.1)CALL DGESL(AB,LDA,N,SCRATCH,AB(1,N+1),0)
+      IF(M.GT.1)THEN
+       WRITE(6,1000)
+1000   FORMAT(T3,'@MINV-F, Only one system can be solved at a time.')
+!       CALL ERREX
+      ENDIF
+      IF(M.EQ.0)CALL DGEDI(AB,LDA,N,SCRATCH,DET,SCRATCH(IOFF),11)
+C
+      RETURN
+      END

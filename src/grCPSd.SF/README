@@ -1,0 +1,6 @@
+spin free ground state grCPS(D) program based on CPS(D)(ref DOI: 10.1063/1.5004037), with:
+1. zorth order Jacobian slect as CIS(Doo) Jacobian
+2. start from CCS, so the *T1 and *T2 be 0
+
+only support iop=0
+perturbation T store in file 'iCPSd_T_': (T1,T2)^(1),(T1,T2)^(2),...

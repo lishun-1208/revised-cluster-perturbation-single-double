@@ -1,0 +1,30 @@
+      SUBROUTINE ZERO_S(A,LEN)
+C
+C ZEROS OUT THE FIRST LEN ELEMENTS OF DOUBLE PRECISION VECTOR A.
+C
+CEND
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      REAL*4 A(LEN)
+C
+      CALL SSCAL(LEN, 0.0, A, 1)
+C     M=MOD(LEN,5)
+C     IF(M.NE.0) THEN
+C      DO 1 I=1,M
+C       A(I)=0.D0
+C      CONTINUE
+C     ENDIF
+C     IF(LEN.GE.5) THEN
+C      MP1=M+1
+C      DO 3 I=MP1,LEN,5
+C       A(I)=0.D0
+C       A(I+1)=0.D0
+C       A(I+2)=0.D0
+C       A(I+3)=0.D0
+C       A(I+4)=0.D0
+C      CONTINUE
+C     ENDIF
+C      DO 10 I=1,LEN
+C       A(I)=0.D0
+C10    CONTINUE
+      RETURN
+      END

@@ -1,0 +1,270 @@
+This is a subroutine library for CCSDSO and other codes based on CCSDSO.
+A brief introduction to the functions of these subroutines, detailed introduction can be found in the subroutines.
+
+clmoioso, clmoioso0, clmoioso_s, clmoioso0_s: 
+Those subroutine can be employed to allocate hard disk space to store
+double electron integrals with double precision and single precision(with _s)
+
+rmtmp    : is to delete the file allocated by clmoioso
+
+putallso and putallso_s: 
+is to put double electron integrals to hard disk with all symmetry 
+
+putlstso and putlstso_s:
+is to put double electron integrals to hard disk with special symmetry
+
+getallso and getallso_s: 
+is to get double electron integrals from hard disk with all symmetry 
+
+getlstso and getlstso_s: 
+is to get double electron integrals from hard disk with special symmetry
+
+itranspso: is to transp I(pq, rs) to I(rs, pq)
+
+iexpso   : is to expand I(p<q,r<s) to I(p<q,r,s) and so on.
+
+isymtrso : is to change the index of I(pq,rs) to I(pq, sr) or I(qp, rs) and so on
+
+iassymso : is to do the antisymmetric like J(pq,rs)=I(pq,rs)-I(pq,sr) and so on
+
+sstgenso : is to change the index of I(pq,rs) to I(pr,qs) and so on
+
+icompso : is to compress p,q to p<q or p<=q and so on
+ 
+=============================================================================
+Those subroutine below is to do the multiplication of double-electron integral. One should note that the double electron integral in those subroutines must be saved as I(pq,rs)
+
+VmnpqVmnrs_to_Vpqrs 
+VpqmnVmnrs_to_Vpqrs
+VpqmnVrsmn_to_Vpqrs
+VpqrmVms_to_Vpqrs
+VpqrmVsm_to_Vpqrs
+VpqrmVpqrn_to_Vmn
+
+! ==============================================================================================
+!
+!   [ 终极工业级张量引擎 - 前端调度层 API 详细参考手册 (Rigorous Edition) ]
+!
+!   【IOP 内存压缩与对称性法则 (IOP Memory Compression Theory)】
+!
+!   * IOP = 0 : 严格下三角压缩 (p < q)，适用于反称张量。
+!   * IOP = 1 : 全展开满秩方阵 (p, q 独立)，无置换对称性。
+!   * IOP = 2 : 含对角下三角压缩 (p <= q)，适用于对称张量。
+!
+!   【Pair 内存对齐法则 (Contiguous Memory Matching Rule)】 - [核心灵魂]
+!
+!   底层的 GEMM 引擎将多维张量映射为二维矩阵 (M x K * K x N = M x N)。
+!
+!   1. 只要一个物理 Pair (如 pq 或 mn) 在共享它的两个张量中，【位置相邻且顺序一致】，
+!      那么它的非线性压缩结构在内存中就是完全对齐的！
+!   2. 此时，底层引擎会把这个压缩后的一维空间整体视作一个宏维度 (Macro-Index)。
+!   3. 结论：无论是外部保留维度，还是内部收缩维度，只要满足对齐，完美支持 IOP = 0/1/2！
+!   若 Pair 被拆分或发生乱序重组，内存连续性被撕裂，才强制要求解压为 IOP = 1。
+!
+! ==============================================================================================
+!
+!   【硬件架构与动态双擎：内存/显存开销剖析 (Hardware & Memory Overhead)】
+!
+!   主程序根据环境变量 (prec, igpu) 自动将任务下发至四台底层高能引擎。
+!   当无法命中 Fast Path (Zero-Copy) 时，将触发 Fallback 瓦片装配引擎：
+!
+!   [A] CPU 双精度核心 (vv2v_dpd_444_d)
+!       - 内存开销：动态申请 buf_A, buf_B, buf_C (REAL*8)。单个元素总开销 24 Bytes。
+!       - 内存上限：全局安全线 ~3.5 GB。块大小 (BS) 动态计算：sqrt(Mem / 24)。
+!
+!   [B] CPU 单精度核心 (vv2v_dpd_444_s)
+!       - 内存开销：单精度 REAL*4，单个元素总开销骤降至 12 Bytes。
+!       - 性能红利：BS 块大小显著大于双精度，缓存命中率跃升，吞吐极度强化。
+!
+!   [C] GPU 双精度核心 (vv2v_dpd_444_dg)
+!       - 引擎 A (狂飙模式)：当预扫描全局显存需求 <= 500 MB 时，一次性全量拼装执行。
+!       - 引擎 B (生存模式)：显存 > 500 MB 时，强制 Tiling (TILE_DIM=4000)。
+!         显存开销被严密封锁在 ~512 MB，确保超大体系不死机。
+!
+!   [D] GPU 单精度核心 (vv2v_dpd_444_sg)
+!       - 引擎 A/B 调度逻辑同上 (<= 500 MB 阈值)。
+!       - 防截断装甲：在 Tiling 引擎 B 中，跨瓦片累加极易产生单精度截断误差。
+!         底层引入了 REAL*8 的 `buf_C_fp64` 累加器，完美吸收截断误差后，
+!         再安全 cast 回单精度 (sngl)，实现速度与精度的完美平衡。
+!
+! ==============================================================================================
+!
+!   【BLAS 标准代数缩并法则 (Algebraic Scaling Factors: fact1 & fact2)】
+!
+!   所有 vv2v_dpd_* 前端接口及底层收缩，均严谨遵循 BLAS GEMM 官方数学模型：
+!
+!          V3 = fact1 * (V1 \otimes V2) + fact2 * V3
+!
+!   * fact1 (alpha) : 乘法缩放系数。控制 V1 和 V2 张量点积结果的权重（如物理公式中的 0.5）。
+!   * fact2 (beta)  : 累加缩放系数。控制结果张量 V3 原始数据的保留权重。
+!
+!   [ 常用调用场景范式 ]:
+!   1. 直接赋值 (Overwrite) : fact1 =  1.0d0, fact2 = 0.0d0  (V3 = V1 * V2)
+!   2. 增量累加 (Accumulate): fact1 =  1.0d0, fact2 = 1.0d0  (V3 = V3 + V1 * V2)
+!   3. 增量相减 (Subtract)  : fact1 = -1.0d0, fact2 = 1.0d0  (V3 = V3 - V1 * V2)
+!
+!   ⚠️ 极速优化提示：当判定 fact2 == 0.0d0 时，引擎底层会在块组装前安全忽略 V3 的旧脏数据，
+!   无需在外部预先对 V3 调用 zeroso 进行清零，极大节省带宽开销！
+!
+! ==============================================================================================
+! ----------------------------------------------------------------------------------------------
+! 【核心模式总览】
+! ----------------------------------------------------------------------------------------------
+!
+! 本引擎提供 6 个标准化 vv2v_dpd 张量运算接口，按「输入 1 维度数 + 输入 2 维度数 + 输出维度数」统一命名，
+! 全部基于上述 IOP 压缩与 Pair 对齐法则调度，覆盖量子化学从头算 99% 以上的高频张量计算场景。
+!
+! 各模式核心特性速览：
+! 1. 444 : 双指标全对齐收缩，特定条件所有 Pair 均支持压缩
+! 2. 442 : 三指标深度收缩，仅公共前置 Pair支持压缩
+! 3. 424 : 单指标单边投影，仅输入输出公共前置 Pair 支持压缩
+! 4. 323 : 三指标张量变换，仅锁定的前置 Pair 支持压缩
+! 5. 224 : 零开销外积生成，无指标收缩，所有 Pair 全 IOP兼容
+! 6. 222 : 标准分块矩阵乘法，所有 Pair 均被撕裂，强制全展开(IOP=1)，兼容通用矩阵运算
+! ----------------------------------------------------------------------------------------------
+!
+! ----------------------------------------------------------------------------------------------
+!  [1] 模式 444 : vv2v_dpd_444 (全尺寸核心调度器)
+! ----------------------------------------------------------------------------------------------
+!  * 严谨公式: V3(pqrs) = fact2 * V3(pqrs) + fact1 * \sum_{m,n} [ V1(pqmn) * V2(mnrs) ]
+!  * 物理场景: 双电子积分/T2振幅的 2 指标收缩 (例如 Ring Term / Ladder Term)。
+!  
+!  * 核心 IOP 规范:
+!    - ioppq : V1(pq..) 和 V3(pq..) 完美对齐，支持 0, 1, 2。
+!    - iopmn : V1(..mn) 和 V2(mn..) 完美对齐！GEMM的K维度可直接在压缩空间收缩，支持 0, 1, 2！
+!    - ioprs : V2(..rs) 和 V3(..rs) 完美对齐，支持 0, 1, 2。
+!
+!  * ❌ 乱序范例 (强制全解压 IOP=1):
+!    - 流向: aeim * embj -> abij
+!    - 解析: 保留维 ae 被撕裂为 ab，收缩维 im 和 em 发生交错。底层必须强行拆解重组。
+!
+!  * 严谨调用范例 (假设全反称体系，所有 Pair 均为压缩态):
+!    integer :: ioppq = 0, iopmn = 0, ioprs = 0
+!
+!    call vv2v_dpd_444( &
+!        V_pqmn, popp, popq, ioppq, popm, popn, iopmn, sym1, 'pqmn', &
+!        V_mnrs, popm, popn, iopmn, popr, pops, ioprs, sym2, 'mnrs', &
+!        V_pqrs, popp, popq, ioppq, popr, pops, ioprs, sym3, 'pqrs', &
+!        fact1, fact2 )
+!
+! ----------------------------------------------------------------------------------------------
+!  [2] 模式 442 : vv2v_dpd_442 (3 指标极速收缩器)
+! ----------------------------------------------------------------------------------------------
+!  * 严谨公式: V3(mn) = fact2 * V3(mn) + fact1 * \sum_{p,q,r} [ V1(pqrm) * V2(pqrn) ]
+!  * 物理场景: 深度收缩 (例如微扰理论中生成有效 Fock 矩阵的修正项)。
+!  
+!  * 核心 IOP 规范:
+!    - ioppq : pq 构成未被拆分的宏维 (Macro-Index)，在 V1 和 V2 中完美对齐，支持 0, 1, 2。
+!    - ioprm : V1(pqrm) 的后两维被拆分为 r(收缩) 和 m(保留)，结构撕裂，强制要求 1。
+!    - ioprn : V2(pqrn) 的后两维同理被撕裂，强制要求 1。
+!    - iopmn : m,n 来自不同张量且不构成物理 Pair，V3 强制要求 1。
+!
+!  * ❌ 乱序范例 (强制全解压 IOP=1):
+!    - 流向: pqrm * rqpn -> mn
+!    - 解析: 前端宏维 pq 在 V2 中颠倒成了 rq，原有的下三角内存连续性被破坏。
+!
+!  * 严谨调用范例:
+!    integer :: ioppq = 0, ioprm = 1, ioprn = 1, iopmn = 1
+!
+!    call vv2v_dpd_442( &
+!        V_pqrm, popp, popq, ioppq, popr, popm, ioprm, sym1, 'pqrm', &
+!        V_pqrn, popp, popq, ioppq, popr, popn, ioprn, sym2, 'pqrn', &
+!        V_mn,   popm, popn, iopmn,                    sym3, 'mn',   &
+!        fact1, fact2 )
+!
+! ----------------------------------------------------------------------------------------------
+!  [3] 模式 424 : vv2v_dpd_424 (单指标投影收缩器)
+! ----------------------------------------------------------------------------------------------
+!  * 严谨公式: V3(pqrs) = fact2 * V3(pqrs) + fact1 * \sum_{m} [ V1(pqrm) * V2(ms) ]
+!  * 物理场景: 单边投影/轨道旋转 (例如 T2 振幅与有效 Fock 矩阵的作用)。
+!  
+!  * 核心 IOP 规范:
+!    - ioppq : V1 和 V3 前端对齐，支持 0, 1, 2。
+!    - ioprm : V1(pqrm) 中 r保留、m收缩，Pair 被撕裂，强制要求 1。
+!    - iopms : V2 单指标投影算符，由于 m 被收缩，强制要求 1。
+!    - ioprs : V3 的新组合指标对，来自两个不同张量的维度拼接，强制要求 1。
+!
+!  * ❌ 乱序范例 (强制全解压 IOP=1):
+!    - 流向: pmqr * ms -> prqs
+!    - 解析: pq Pair 在 V1 中被 m 和 r 隔断拆分，在 V3 中又交叉重组成 prqs。
+!
+!  * 严谨调用范例:
+!    integer :: ioppq = 0, ioprm = 1, iopms = 1, ioprs = 1
+!
+!    call vv2v_dpd_424( &
+!        V_pqrm, popp, popq, ioppq, popr, popm, ioprm, sym1, 'pqrm', &
+!        V_ms,   popm, pops, iopms,                    sym2, 'ms',   &
+!        V_pqrs, popp, popq, ioppq, popr, pops, ioprs, sym3, 'pqrs', &
+!        fact1, fact2 )
+!
+! ----------------------------------------------------------------------------------------------
+!  [4] 模式 323 : vv2v_dpd_323 (3 指标张量变换器)
+! ----------------------------------------------------------------------------------------------
+!  * 严谨公式: V3(pqr) = fact2 * V3(pqr) + fact1 * \sum_{m} [ V1(pqm) * V2(mr) ]
+!  * 物理场景: 密度拟合 (DF) 3指标张量与 2维算符的收缩。
+!  
+!  * 核心 IOP 规范 (架构硬性约定):
+!    - V1(pqm) 和 V3(pqr) 的前两个指标被底层物理锁定为一个 Pair。
+!    - ioppq : 若输出未乱序(pqm*mr->pqr)，pq 完美对齐，支持 0, 1, 2。若输出乱序(->rpq)，引擎将拦截并强制要求 1。
+!    - iopmr : V2(mr) 参与非对称的指标替换，强制要求 1。
+!
+!  * ❌ 乱序范例 (强制全解压 IOP=1):
+!    - 流向: pqm * mr -> rpq
+!    - 解析: 尽管 pq 内部未被拆分，但被整体移位至结果张量的末端，导致多维数组 Stride 突变。
+!
+!  * 严谨调用范例:
+!    integer :: ioppq = 2, iopmr = 1
+!
+!    call vv2v_dpd_323( &
+!        V_pqm, popp, popq, ioppq, popm,        sym1, 'pqm', &
+!        V_mr,  popm, popr, iopmr,              sym2, 'mr',  &
+!        V_pqr, popp, popq, ioppq, popr,        sym3, 'pqr', &
+!        fact1, fact2 )
+!
+! ----------------------------------------------------------------------------------------------
+!  [5] 模式 224 : vv2v_dpd_224 (零开销外积生成器)
+! ----------------------------------------------------------------------------------------------
+!  * 严谨公式: V3(pqrs) = fact2 * V3(pqrs) + fact1 * [ V1(pq) \otimes V2(rs) ]
+!  * 物理场景: 独立算符的外积组合 (例如由两个 Fock 矩阵生成 4 指标全张量)。
+!  
+!  * 核心 IOP 规范 (全 IOP 免疫):
+!    - 由于没有任何指标被收缩、拆分 or 重组，V1(pq) 和 V2(rs) 完整、独立地映射到了 V3。
+!    - ioppq : 完美支持 0, 1, 2。
+!    - ioprs : 完美支持 0, 1, 2。
+!    - (两者可以任意独立组合，例如 ioppq=0, ioprs=2 亦可完美运行)。
+!    - (组合生成prqs则iop=1)
+!
+!  * ❌ 乱序范例 (强制全解压 IOP=1):
+!    - 流向: pr * qs -> pqrs
+!    - 解析: 生成 V3 时发生了交错插值组合，破坏了输入的独立 Pair 结构。
+!
+!  * 严谨调用范例:
+!    integer :: ioppq = 0, ioprs = 0
+!
+!    call vv2v_dpd_224( &
+!        V_pq,   popp, popq, ioppq,                             sym1, 'pq',   &
+!        V_rs,   popr, pops, ioprs,                             sym2, 'rs',   &
+!        V_pqrs, popp, popq, ioppq, popr, pops, ioprs,          sym3, 'pqrs', &
+!        fact1, fact2 )
+!
+! ----------------------------------------------------------------------------------------------
+!  [6] 模式 222 : vv2v_dpd_222 (标准分块矩阵乘法器)
+! ----------------------------------------------------------------------------------------------
+!  * 严谨公式: V3(pr) = fact2 * V3(pr) + fact1 * \sum_{m} [ V1(pm) * V2(mr) ]
+!  * 物理场景: 标准的不可约表示 (Irrep) 矩阵乘法。
+!  
+!  * 核心 IOP 规范 (强制全展开):
+!    - 由于 V1(pm)、V2(mr) 均被收缩操作撕裂了 Pair 结构。
+!    - V3(pr) 由首尾独立的指标拼接，内存物理上不构成连续压缩态。
+!    - 结论：引擎将阻断任何压缩尝试。ioppm, iopmr, ioppr 均强制要求 1。
+!
+!  * 严谨调用范例:
+!    integer :: ioppm = 1, iopmr = 1, ioppr = 1
+!
+!    call vv2v_dpd_222( &
+!        V_pm, popp, popm, ioppm, sym1, 'pm', &
+!        V_mr, popm, popr, iopmr, sym2, 'mr', &
+!        V_pr, popp, popr, ioppr, sym3, 'pr', &
+!        fact1, fact2 )
+!
+! ==============================================================================================
