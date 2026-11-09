@@ -122,7 +122,7 @@ subroutine run(iCore, maxCore)
         write (6, '(A,I5)') 'excitation energy for symmetry:', irrep
         call R1%init(iCore, popv, popo, zorb, zorb, 1, 1, irrep, T, i0)
         i1 = i0 + R1%len
-        call R2%init(iCore, popv, popv, popo, popo, iop, iop, irrep, T, i0)
+        call R2%init(iCore, popv, popv, popo, popo, iop, iop, irrep, T, i1)
 
         do iroot = 1, estate_sym(irrep)
             idx = (iroot - 1)*(1 + R1%len + R2%len) + 1
